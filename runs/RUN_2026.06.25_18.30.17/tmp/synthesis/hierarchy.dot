@@ -1,0 +1,37 @@
+digraph "uart_top" {
+label="uart_top";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="rx", color="black", fontcolor="black" ];
+n2 [ shape=diamond, label="baud_tick", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="rx_done", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="rx_data", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="tx_done", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="tx", color="black", fontcolor="black" ];
+n7 [ shape=octagon, label="data", color="black", fontcolor="black" ];
+n8 [ shape=octagon, label="tx_start", color="black", fontcolor="black" ];
+n9 [ shape=octagon, label="rst", color="black", fontcolor="black" ];
+n10 [ shape=octagon, label="clk", color="black", fontcolor="black" ];
+c11 [ shape=record, label="{{<p2> baud_tick|<p10> clk|<p9> rst|<p1> rx}|rxu\nrx_unit|{<p4> rx_data|<p3> rx_done}}",  ];
+c12 [ shape=record, label="{{<p2> baud_tick|<p10> clk|<p7> data|<p9> rst|<p8> tx_start}|txu\ntx_unit|{<p6> tx|<p5> tx_done}}",  ];
+c13 [ shape=record, label="{{<p10> clk|<p9> rst}|bg\nbaud_gen|{<p2> baud_tick}}",  ];
+x0 [shape=box, style=rounded, label="BUF", ];
+x0:e -> n1:w [color="black", fontcolor="black", label=""];
+n1:e -> c11:p1:w [color="black", fontcolor="black", label=""];
+n10:e -> c11:p10:w [color="black", fontcolor="black", label=""];
+n10:e -> c12:p10:w [color="black", fontcolor="black", label=""];
+n10:e -> c13:p10:w [color="black", fontcolor="black", label=""];
+c13:p2:e -> n2:w [color="black", fontcolor="black", label=""];
+n2:e -> c11:p2:w [color="black", fontcolor="black", label=""];
+n2:e -> c12:p2:w [color="black", fontcolor="black", label=""];
+c11:p3:e -> n3:w [color="black", fontcolor="black", label=""];
+c11:p4:e -> n4:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c12:p5:e -> n5:w [color="black", fontcolor="black", label=""];
+c12:p6:e -> n6:w [color="black", fontcolor="black", label=""];
+n6:e -> x0:w [color="black", fontcolor="black", label=""];
+n7:e -> c12:p7:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n8:e -> c12:p8:w [color="black", fontcolor="black", label=""];
+n9:e -> c11:p9:w [color="black", fontcolor="black", label=""];
+n9:e -> c12:p9:w [color="black", fontcolor="black", label=""];
+n9:e -> c13:p9:w [color="black", fontcolor="black", label=""];
+}
