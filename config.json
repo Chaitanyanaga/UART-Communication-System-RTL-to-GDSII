@@ -1,0 +1,8 @@
+{
+  "DESIGN_NAME": "uart_top",
+  "VERILOG_FILES": "dir::rtl/*.v",
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10,
+  "FP_CORE_UTIL": 70,
+  "PL_TARGET_DENSITY": 0.79
+}
